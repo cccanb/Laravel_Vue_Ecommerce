@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
     Route::patch('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category', [CategoryController::class, 'delete'])->name('category.delete');
+
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/new', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::patch('/user/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user', [UserController::class, 'delete'])->name('user.delete');
 });
 
 Route::middleware('auth')->group(function () {
