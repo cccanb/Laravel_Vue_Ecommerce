@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->prefix('admin')->name('dashboard');
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard');
+    })->name('dashboard');
+
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category/new', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
+    Route::patch('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category', [CategoryController::class, 'delete'])->name('category.delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
