@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,13 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
     Route::patch('/user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user', [UserController::class, 'delete'])->name('user.delete');
+
+    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/product/new', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+    Route::patch('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/product', [ProductController::class, 'delete'])->name('product.delete');
 });
 
 Route::middleware('auth')->group(function () {

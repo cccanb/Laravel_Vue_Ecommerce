@@ -43,7 +43,7 @@
                         </a>
                     </div>
                     <div class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-300 font-bold">
-                        <a href="child.path" class="block cursor-pointer p-2 hover:bg-gray-600 mt-1">
+                        <a href="{{ route('product.index') }}" class="block cursor-pointer p-2 hover:bg-gray-600 mt-1">
                             Products
                         </a>
                     </div>
