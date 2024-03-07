@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <title>Homepage - TailwindCSS Ecommerce Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="TailwindCSS Ecommerce Template">
+
+    @vite(['resources/css/app.css'])
+</head>
+
+<body>
+    <div id="app"></div>
+    @vite('resources/js/app.js')
+</body>
+
+</html>

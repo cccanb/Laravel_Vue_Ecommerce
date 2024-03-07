@@ -1,7 +1,16 @@
-import './bootstrap';
+import "./bootstrap";
+import { createApp } from "vue";
+import router from "./router";
 
-import Alpine from 'alpinejs';
+import App from "./components/Index.vue";
 
-window.Alpine = Alpine;
+import Alpine from "alpinejs";
 
-Alpine.start();
+if (window.location.pathname.includes("admin")) {
+    window.Alpine = Alpine;
+    Alpine.start();
+} else {
+    const app = createApp(App);
+    app.use(router);
+    app.mount("#app");
+}

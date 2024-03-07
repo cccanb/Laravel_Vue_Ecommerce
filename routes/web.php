@@ -17,9 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// })->name('home');
+
+// Route::get('/category', function () {
+//     return view('category');
+// })->name('category');
+
+// Route::get('/cart', function () {
+//     return view('cart');
+// })->name('cart');
+
+// Route::get('/product', function () {
+//     return view('product');
+// })->name('product');
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// })->name('contact');
+
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '^((?!admin).)*$');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
